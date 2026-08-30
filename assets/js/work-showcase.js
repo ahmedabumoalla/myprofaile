@@ -62,7 +62,8 @@
     projectGrid.innerHTML = projects.map((project, index) => {
       const layoutClass = wideCards.has(index) ? "project-card--wide" : tallCards.has(index) ? "project-card--tall" : "";
       return `
-        <button class="project-card ${layoutClass} ${index === selectedIndex ? "is-active" : ""} reveal" type="button" data-project-id="${escapeHtml(project.id)}" aria-label="اعرض مشروع ${escapeHtml(project.title)} في المسرح" aria-pressed="${index === selectedIndex}">
+        <article class="project-card ${layoutClass} ${index === selectedIndex ? "is-active" : ""} reveal">
+          <button class="project-card__select" type="button" data-project-id="${escapeHtml(project.id)}" aria-label="اعرض مشروع ${escapeHtml(project.title)} في المسرح" aria-pressed="${index === selectedIndex}"></button>
           <span class="project-card__visual">
             <img src="${escapeHtml(projectImage(project))}" alt="واجهة مشروع ${escapeHtml(project.title)}" loading="lazy" decoding="async">
             <span class="project-card__index">${pad(index + 1)}</span>
@@ -72,17 +73,18 @@
               <span class="project-card__category">${escapeHtml(categoryFor(project))}</span>
               <span class="project-card__title">${escapeHtml(project.title)}</span>
               <span class="project-card__description">${escapeHtml(project.description)}</span>
+              <a class="project-card__live" href="${escapeHtml(project.live)}" target="_blank" rel="noopener noreferrer" aria-label="افتح مشروع ${escapeHtml(project.title)}">تجربة مباشرة <span>↗</span></a>
             </span>
             <span class="project-card__stack">${project.tech.slice(0, 4).map((technology) => `<span>${escapeHtml(technology)}</span>`).join("")}</span>
           </span>
-        </button>`;
+        </article>`;
     }).join("");
   }
 
   function updateGridSelection() {
     projectGrid.querySelectorAll("[data-project-id]").forEach((card) => {
       const active = card.dataset.projectId === projects[selectedIndex].id;
-      card.classList.toggle("is-active", active);
+      card.closest(".project-card")?.classList.toggle("is-active", active);
       card.setAttribute("aria-pressed", String(active));
     });
   }
@@ -102,6 +104,9 @@
     setText("heroKicker", project.kicker);
     setText("heroProjectTitle", project.title);
     setText("heroDescription", project.description);
+    const heroLive = document.getElementById("heroLive");
+    heroLive.href = project.live;
+    heroLive.setAttribute("aria-label", `افتح مشروع ${project.title}`);
     document.getElementById("heroBackdrop").src = image;
     document.getElementById("heroTech").innerHTML = project.tech.slice(0, 6).map((technology) => `<span>${escapeHtml(technology)}</span>`).join("");
 
@@ -111,6 +116,9 @@
     setText("lensDescription", project.description);
     setText("lensBrowserLabel", `${project.title} / ${categoryFor(project)}`);
     setText("lensImageCaption", project.title);
+    const lensLive = document.getElementById("lensLive");
+    lensLive.href = project.live;
+    lensLive.setAttribute("aria-label", `زيارة مشروع ${project.title}`);
     document.getElementById("lensTech").innerHTML = project.tech.map((technology) => `<span>${escapeHtml(technology)}</span>`).join("");
     document.getElementById("lensSpecs").innerHTML = [
       [project.metrics.pages, "شاشة ومسار"],

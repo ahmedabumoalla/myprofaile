@@ -92,6 +92,10 @@ img { display: block; max-width: 100%; }
 .hero-selected { width: min(var(--max), 100%); min-height: 116px; display: grid; grid-template-columns: .7fr 1.25fr 1fr; align-items: center; gap: clamp(24px, 4vw, 70px); margin: 0 auto; padding: 20px var(--page-pad); border-top: 1px solid var(--line); }
 .hero-selected > div:first-child span { color: var(--bronze); font-size: 10px; }
 .hero-selected h2 { margin: 5px 0 0; font-size: clamp(27px, 3vw, 44px); font-weight: 300; letter-spacing: -.035em; }
+.project-live-link { width: fit-content; display: inline-flex; align-items: center; gap: 9px; border: 1px solid rgba(219, 196, 157, .34); color: var(--bronze-soft); font-size: 10px; text-decoration: none; transition: color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease; }
+.project-live-link:hover,
+.project-live-link:focus-visible { color: var(--bg-deep); border-color: var(--bronze-soft); background: var(--bronze-soft); transform: translateY(-2px); }
+.project-live-link--hero { margin-top: 14px; padding: 9px 12px; }
 .hero-selected > p { margin: 0; color: var(--muted-strong); font-size: 12px; font-weight: 300; line-height: 1.85; }
 .hero-tech,
 .lens-tech { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 6px; direction: ltr; }
@@ -113,6 +117,7 @@ img { display: block; max-width: 100%; }
 .lens-kicker { margin: 44px 0 0; color: var(--muted); font-size: 10px; }
 .lens-copy h3 { margin: 10px 0 0; font-size: clamp(38px, 4vw, 62px); font-weight: 300; line-height: 1.08; letter-spacing: -.045em; }
 .lens-description { margin: 24px 0 32px; color: var(--muted-strong); font-size: 12px; font-weight: 300; line-height: 1.9; }
+.project-live-link--lens { margin-top: 26px; padding: 12px 15px; }
 .lens-screen { position: relative; min-width: 0; margin: 0; overflow: hidden; background: var(--bg-deep); }
 .browser-bar { position: absolute; z-index: 4; top: 0; right: 0; left: 0; height: 30px; display: flex; align-items: center; gap: 5px; padding: 0 10px; direction: ltr; border-bottom: 1px solid var(--line); background: rgba(4, 6, 5, .94); }
 .browser-bar i { width: 5px; height: 5px; border-radius: 50%; background: #747975; }
@@ -137,7 +142,7 @@ img { display: block; max-width: 100%; }
 .project-card--wide { grid-column: span 8; min-height: 520px; }
 .project-card--tall { min-height: 520px; }
 .project-card:hover,
-.project-card:focus-visible { z-index: 2; border-color: rgba(219, 196, 157, .5); transform: translateY(-4px); }
+.project-card:focus-within { z-index: 2; border-color: rgba(219, 196, 157, .5); transform: translateY(-4px); }
 .project-card.is-active { border-color: var(--bronze); box-shadow: inset 0 0 0 1px rgba(189, 154, 97, .24); }
 .project-card__visual { position: relative; flex: 1 1 auto; min-height: 245px; overflow: hidden; background: var(--bg-deep); }
 .project-card--wide .project-card__visual { min-height: 360px; }
@@ -152,9 +157,13 @@ img { display: block; max-width: 100%; }
 .project-card__category { color: var(--bronze); font-size: 9px; }
 .project-card__title { display: block; margin: 7px 0 0; overflow: hidden; font-size: clamp(23px, 2vw, 32px); font-weight: 300; line-height: 1.16; text-overflow: ellipsis; white-space: nowrap; }
 .project-card__description { display: -webkit-box; margin: 10px 0 0; overflow: hidden; color: var(--muted); font-size: 10px; line-height: 1.7; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.project-card__live { position: relative; z-index: 4; display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; color: var(--bronze-soft); font-size: 9px; text-decoration: none; }
+.project-card__live::after { content: ""; position: absolute; right: 0; bottom: -4px; width: 100%; height: 1px; background: currentColor; transform: scaleX(.28); transform-origin: right; transition: transform .3s var(--ease); }
+.project-card__live:hover::after,
+.project-card__live:focus-visible::after { transform: scaleX(1); }
 .project-card__stack { display: flex; flex-direction: column; align-items: end; gap: 5px; direction: ltr; }
 .project-card__stack span { color: var(--muted); font-family: var(--font-mono); font-size: 7px; }
-.project-card__select { position: absolute; z-index: 3; inset: 0; }
+.project-card__select { position: absolute; z-index: 3; inset: 0; border: 0; background: transparent; }
 
 .capabilities { border-top: 1px solid var(--line); }
 .capabilities-heading { max-width: 780px; }
