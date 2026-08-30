@@ -12,6 +12,9 @@
   const fanFloat = document.getElementById('fanFloat');
   const tabMvp = document.getElementById('tabMvp');
   const tabPitch = document.getElementById('tabPitch');
+  const fanPrevButton = document.getElementById('fanPrev');
+  const fanNextButton = document.getElementById('fanNext');
+  const fanStatus = document.getElementById('fanStatus');
 
   let viewMode = 'mvp';
   let featuredIndex = 0;
@@ -31,6 +34,7 @@
     const lang = window.Platform.getLang();
     const list = activeList();
     const n = list.length;
+    fanStatus.textContent = `${featuredIndex + 1} / ${n}`;
     fanStage.innerHTML = '';
     list.forEach((p, i) => {
       let offset = i - featuredIndex;
@@ -73,6 +77,8 @@
   function setFeatured(i){ featuredIndex = i; renderFan(); }
   function prevFeatured(){ featuredIndex = (featuredIndex - 1 + activeList().length) % activeList().length; renderFan(); }
   function nextFeatured(){ featuredIndex = (featuredIndex + 1) % activeList().length; renderFan(); }
+  fanPrevButton.addEventListener('click', prevFeatured);
+  fanNextButton.addEventListener('click', nextFeatured);
 
   const comingSoonModal = document.getElementById('comingSoonModal');
   function setMode(mode){
@@ -104,7 +110,8 @@
       if(!isDown) return; isDown = false; fanDragging = false; fanStage.style.cursor = 'grab';
       const dx = x - startX;
       fanStage.style.transform = 'perspective(2000px)';
-      if(Math.abs(dx) > 40){ dx < 0 ? nextFeatured() : prevFeatured(); }
+      const dragThreshold = Math.max(72, Math.min(140, window.innerWidth * 0.08));
+      if(Math.abs(dx) > dragThreshold){ dx < 0 ? nextFeatured() : prevFeatured(); }
     };
     fanStage.addEventListener('mousedown', (e) => down(e.pageX));
     window.addEventListener('mousemove', (e) => move(e.pageX));
@@ -118,30 +125,17 @@
   window.addEventListener('mousemove', (e) => {
     if(fanDragging) return;
     const w = window.innerWidth, h = window.innerHeight;
-    const px = ((e.clientX / w) - 0.5) * 2 * 12;
-    const py = ((e.clientY / h) - 0.5) * 2 * 12;
+    const px = ((e.clientX / w) - 0.5) * 2 * 5;
+    const py = ((e.clientY / h) - 0.5) * 2 * 5;
     fanStage.style.transform = `perspective(2000px) translate(${px}px, ${py}px)`;
   });
 
-  // ===== hover switch =====
-  (function setupHoverSwitch(){
-    let lastX = null, cooldown = false;
-    fanStage.addEventListener('mouseleave', () => { lastX = null; });
-    fanStage.addEventListener('mousemove', (e) => {
-      if(fanDragging) return;
-      if(lastX === null){ lastX = e.clientX; return; }
-      const dx = e.clientX - lastX;
-      if(cooldown) return;
-      if(Math.abs(dx) > 45){
-        dx < 0 ? nextFeatured() : prevFeatured();
-        lastX = e.clientX;
-        cooldown = true;
-        setTimeout(() => { cooldown = false; lastX = null; }, 320);
-      } else {
-        lastX = e.clientX;
-      }
-    });
-  })();
+  // Mouse movement only adds subtle depth; projects change through an explicit action.
+  window.addEventListener('keydown', (event) => {
+    if(detailEl.style.display === 'block') return;
+    if(event.key === 'ArrowLeft') nextFeatured();
+    if(event.key === 'ArrowRight') prevFeatured();
+  });
 
   // ===== project detail overlay =====
   const detailEl = document.getElementById('projectDetail');
