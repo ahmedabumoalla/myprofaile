@@ -6,6 +6,17 @@ body{
   background:#0a0a0a;
   font-family:'Inter','IBM Plex Sans Arabic',system-ui,sans-serif;
 }
+
+/* Keep every surface scrollable while hiding the browser's visual scrollbars. */
+html,body,.page-root,*{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+*::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
 ::selection{background:#EF4A23;color:#fff;}
 a{-webkit-tap-highlight-color:transparent;}
 img{max-width:100%;}
