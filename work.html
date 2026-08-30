@@ -1,157 +1,68 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>جميع المشاريع</title>
-<meta name="description" content="أفكار تحوّلت إلى مشاريع تنمو. مجموعة مختارة من أعمالنا.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="34 مشروعًا رقميًا موثّقًا من المستودعات الحقيقية: منصات، ذكاء اصطناعي، لوحات قيادة وتجارب تفاعلية.">
+  <title>المشاريع — هندسة رقمية من الفكرة إلى التشغيل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/work-showcase.css">
 </head>
 <body>
-<div class="page-root" id="pageRoot">
-
-  <!-- ============ HEADER ============ -->
-  <header class="site-header" id="siteHeader">
-    <span class="header-spacer" aria-hidden="true"></span>
-    <nav class="dt-nav" style="align-items:center;gap:30px;">
-      <a href="index.html#services" data-en="Services">خدماتنا</a>
-      <a href="work.html" class="is-active" data-en="Work">مشاريعنا</a>
+  <a class="skip-link" href="#projectGrid">انتقل إلى المشاريع</a>
+  <header class="topbar" id="topbar">
+    <a class="wordmark" href="index.html" aria-label="العودة للرئيسية"><span class="wordmark__mark" aria-hidden="true"></span><span>AHMED / DIGITAL SYSTEMS</span></a>
+    <nav class="topbar__nav" aria-label="التنقل الرئيسي">
+      <a href="index.html">الرئيسية</a><a href="#archive" aria-current="page">المشاريع</a>
+      <a class="topbar__cta" href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ناقش مشروعك <span>↗</span></a>
     </nav>
-    <div class="header-actions">
-      <a href="index.html#booking" class="cta-pill sm-hide" data-en="Start a project">ابدأ مشروعك</a>
-      <button class="icon-btn mb-burger" id="burgerBtn" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-    </div>
   </header>
-  <div class="mb-menu" id="mobileMenu">
-    <a href="index.html#services" data-en="Services">خدماتنا</a>
-    <a href="work.html" data-en="Work">مشاريعنا</a>
-    <a href="index.html#booking" class="mb-cta" data-en="Start a project">ابدأ مشروعك</a>
-  </div>
-
-  <!-- HERO + FEATURED FAN STACK -->
-  <section id="fanHero" style="position:relative;height:100vh;overflow:hidden;display:flex;flex-direction:column;">
-    <div style="position:absolute;top:2%;left:38%;transform:translateX(-50%);width:min(900px,80vw);height:55%;background:radial-gradient(ellipse at center, var(--accent) 0%, transparent 68%);filter:blur(110px);opacity:.18;pointer-events:none;"></div>
-    <div style="position:absolute;top:10%;left:64%;transform:translateX(-50%);width:min(700px,60vw);height:50%;background:radial-gradient(ellipse at center, #7c5cff 0%, transparent 70%);filter:blur(120px);opacity:.10;pointer-events:none;"></div>
-    <div class="noise-overlay"></div>
-    <div style="position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 160px 40px rgba(0,0,0,.55);"></div>
-
-    <div style="position:relative;z-index:2;flex:none;max-width:1280px;margin:0 auto;padding:clamp(104px,13vh,124px) clamp(20px,6vw,80px) 0;width:100%;">
-      <div data-fade data-delay="100" style="text-align:center;margin:0 auto;">
-        <h1 data-en="Ideas turned into projects that grow." style="margin:0 0 6px;font-weight:600;font-size:clamp(24px,3.4vw,40px);line-height:1.1;letter-spacing:-.03em;max-width:18ch;margin-inline:auto;">أفكار تحوّلت إلى مشاريع تنمو.</h1>
-        <p data-en="A selection of the work we've shipped across fintech, retail, and SaaS." style="margin:0 auto;color:var(--text-dim);max-width:48ch;line-height:1.45;font-size:13px;">مجموعة مختارة من المشاريع التي أنجزناها عبر الفينتك والتجارة الإلكترونية والساس.</p>
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__grid" aria-hidden="true"></div><div class="hero__orb hero__orb--one" aria-hidden="true"></div><div class="hero__orb hero__orb--two" aria-hidden="true"></div>
+      <div class="hero__eyebrow reveal"><span class="signal"><i></i> سجل المشاريع / 2026</span><span>بيانات مستخرجة من GitHub مباشرة</span></div>
+      <div class="hero__copy reveal">
+        <h1 id="heroTitle"><span>34 مشروعًا.</span><br>منظومات لا واجهات فقط.</h1>
+        <p>أبني منتجات رقمية كاملة: من هندسة التجربة والهوية، إلى قواعد البيانات ولوحات التشغيل والذكاء الاصطناعي والنشر. كل مشروع هنا موثّق من مستودعه الحقيقي.</p>
       </div>
-      <div style="display:flex;justify-content:center;margin-top:14px;">
-        <div style="display:inline-flex;padding:5px;border-radius:999px;gap:4px;box-shadow:0 12px 30px rgba(0,0,0,.35);background:var(--surface);border:1px solid var(--glass-border);">
-          <button id="tabMvp" class="hero-pill" type="button">MVP</button>
-          <button id="tabPitch" class="hero-pill" type="button">العروض التقديمية</button>
+      <div class="hero__proof reveal" aria-label="إحصاءات المستودعات">
+        <div class="proof-cell"><strong>34</strong><span>مستودعًا بلا استثناء</span></div><div class="proof-cell"><strong>2,281</strong><span>ملف مصدر</span></div><div class="proof-cell"><strong>671</strong><span>شاشة ومسار</span></div><div class="proof-cell"><strong>582</strong><span>مكوّن واجهة</span></div>
+      </div>
+      <a class="hero__scroll" href="#featured"><span>استكشف الأنظمة</span><i aria-hidden="true"></i></a>
+    </section>
+    <section class="featured section-shell" id="featured" aria-labelledby="featuredTitle">
+      <div class="section-heading reveal"><div><span class="section-kicker">SELECTED SYSTEMS / 01</span><h2 id="featuredTitle">أعمال تقود المشهد</h2></div><p>واجهات حقيقية من النسخ المنشورة وملفات المشاريع، لا صورًا تجميلية جاهزة.</p></div>
+      <div class="featured-stage" id="featuredStage"></div>
+    </section>
+    <section class="archive section-shell" id="archive" aria-labelledby="archiveTitle">
+      <div class="section-heading section-heading--archive reveal"><div><span class="section-kicker">FULL REPOSITORY / 02</span><h2 id="archiveTitle">السجل الكامل</h2></div><div class="archive-count"><span id="visibleCount">34</span><small>مشروعًا ظاهرًا</small></div></div>
+      <div class="project-controls reveal" id="projectControls">
+        <label class="search-field"><span class="sr-only">ابحث في المشاريع</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg><input id="projectSearch" type="search" placeholder="ابحث بالاسم أو التقنية..." autocomplete="off"></label>
+        <div class="filter-list" id="filterList" role="group" aria-label="تصفية المشاريع">
+          <button class="filter-button is-active" type="button" data-filter="all">الكل <span>34</span></button><button class="filter-button" type="button" data-filter="platform">منصات</button><button class="filter-button" type="button" data-filter="ai">ذكاء اصطناعي</button><button class="filter-button" type="button" data-filter="dashboard">لوحات تشغيل</button><button class="filter-button" type="button" data-filter="experience">تجارب</button><button class="filter-button" type="button" data-filter="industry">صناعة</button><button class="filter-button" type="button" data-filter="mobile">موبايل</button><button class="filter-button" type="button" data-filter="concept">نوى مبكرة</button>
         </div>
       </div>
-      <div class="fan-navigation" aria-label="التنقل بين المشاريع">
-        <button id="fanPrev" class="fan-navigation__button" type="button" aria-label="المشروع السابق">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-        <span id="fanStatus" class="fan-navigation__status" aria-live="polite">1 / 5</span>
-        <button id="fanNext" class="fan-navigation__button" type="button" aria-label="المشروع التالي">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="fan-float" id="fanFloat" style="position:relative;z-index:1;flex:1 1 auto;min-height:0;display:flex;align-items:flex-end;justify-content:center;">
-      <div id="fanStage" style="position:relative;width:100%;height:clamp(400px,60vh,700px);max-height:94%;transform:translateY(28px);display:flex;align-items:flex-end;justify-content:center;touch-action:pan-y;cursor:grab;perspective:2000px;transition:transform .4s ease;"></div>
-    </div>
-  </section>
-
-  <!-- ============ COMING SOON MODAL ============ -->
-  <div id="comingSoonModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(5,5,5,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;">
-    <div onclick="event.stopPropagation()" style="width:min(420px,100%);background:var(--surface);border:1px solid var(--line-strong);border-radius:22px;padding:44px 32px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative;">
-      <button id="closeComingSoon" style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--glass-border);background:var(--glass-card);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-      </div>
-      <h3 data-en="Coming soon" style="margin:0 0 10px;font-size:22px;font-weight:600;">قريباً</h3>
-      <p data-en="We're preparing our pitch deck showcase. Check back soon." style="margin:0;color:var(--text-dim);font-size:14.5px;line-height:1.7;">نعمل حالياً على تجهيز معرض العروض التقديمية، تابعونا قريباً.</p>
-    </div>
+      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+      <div class="empty-result" id="emptyResult" hidden><span>NO_MATCH</span><h3>لا توجد نتيجة بهذا البحث</h3><button type="button" id="resetFilters">عرض كل المشاريع</button></div>
+    </section>
+    <section class="capabilities section-shell" aria-labelledby="capabilitiesTitle">
+      <div class="section-heading reveal"><div><span class="section-kicker">ENGINEERING RANGE / 03</span><h2 id="capabilitiesTitle">قدرة تقنية تغطي المنتج كاملًا</h2></div><p>التقنية ليست قائمة شعارات؛ هي قرارات هندسية تخدم رحلة المستخدم وتشغيل العمل.</p></div>
+      <div class="capability-matrix reveal"><article><span>01</span><h3>Product & UX</h3><p>نمذجة الرحلات، أنظمة التصميم، RTL، الوصول، والنماذج التفاعلية.</p></article><article><span>02</span><h3>Frontend Systems</h3><p>Next.js وReact وTypeScript وتجارب حركة و3D عالية الأداء.</p></article><article><span>03</span><h3>Data & Operations</h3><p>Supabase، صلاحيات، مسارات API، لوحات إدارة وتقارير تنفيذية.</p></article><article><span>04</span><h3>AI & Intelligence</h3><p>تحليل مخططات وصور، توصيات، مساعدين أذكياء، وواجهات قرار.</p></article><article><span>05</span><h3>Shipping</h3><p>بناء متجاوب، اختبارات، تغليف موبايل، ونشر إنتاجي على Vercel.</p></article></div>
+    </section>
+    <section class="contact-cta" id="contact"><div class="contact-cta__grid" aria-hidden="true"></div><div class="contact-cta__index">NEXT<br>BUILD</div><div class="contact-cta__copy reveal"><span>لديك فكرة تحتاج فريقًا يفكر كمالك منتج؟</span><h2>دعنا نبني شيئًا<br>يصعب تجاهله.</h2><a href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ابدأ محادثة مباشرة <i>↗</i></a></div><div class="contact-cta__meta"><span>+966 50 842 4401</span><span>المملكة العربية السعودية</span></div></section>
+  </main>
+  <footer class="footer"><span>© 2026 — جميع المشاريع موثّقة من مستودعاتها.</span><a href="#topbar">العودة للأعلى ↑</a></footer>
+  <div class="project-modal" id="projectModal" aria-hidden="true">
+    <button class="project-modal__backdrop" type="button" data-close-modal aria-label="إغلاق التفاصيل"></button>
+    <section class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="project-modal__header"><span id="modalIndex">CASE / 01</span><button type="button" data-close-modal>إغلاق <kbd>ESC</kbd></button></header>
+      <div class="project-modal__body"><div class="modal-visual" id="modalVisual"></div><div class="modal-content"><div class="modal-status" id="modalStatus"></div><p class="modal-kicker" id="modalKicker"></p><h2 id="modalTitle"></h2><p class="modal-description" id="modalDescription"></p><div class="modal-metrics" id="modalMetrics"></div><div class="modal-section"><span>TECHNOLOGY STACK</span><div class="modal-tech" id="modalTech"></div></div><div class="modal-actions" id="modalActions"></div></div></div>
+      <div class="project-modal__nav"><button type="button" id="modalPrev"><span>←</span> السابق</button><span id="modalPosition">01 / 34</span><button type="button" id="modalNext">التالي <span>→</span></button></div>
+    </section>
   </div>
-
-  <!-- ============ PROJECT DETAIL (full page) ============ -->
-  <div id="projectDetail" class="no-scrollbar" style="display:none;position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;">
-    <header class="site-header">
-      <span class="header-spacer" aria-hidden="true"></span>
-      <nav class="dt-nav" style="align-items:center;gap:30px;">
-        <a href="index.html#services" data-en="Services">خدماتنا</a>
-        <a href="work.html" class="is-active" data-en="Work">مشاريعنا</a>
-      </nav>
-      <div class="header-actions">
-        <a href="index.html#booking" class="cta-pill sm-hide" data-en="Start a project">ابدأ مشروعك</a>
-      </div>
-    </header>
-
-    <div style="position:relative;height:min(38vh,360px);min-height:240px;overflow:hidden;">
-      <img id="pdImage" src="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="">
-      <div style="position:absolute;inset:0;background:linear-gradient(0deg, var(--bg) 0%, rgba(10,10,10,.15) 65%, rgba(10,10,10,.1) 100%);"></div>
-    </div>
-
-    <div style="max-width:900px;margin:0 auto;padding:clamp(40px,6vh,60px) clamp(20px,6vw,40px) clamp(80px,12vh,120px);">
-      <button id="pdClose" style="display:flex;align-items:center;gap:8px;background:var(--glass-card);border:1px solid var(--glass-border);color:var(--text);padding:10px 18px;border-radius:999px;font-size:13.5px;cursor:pointer;margin-bottom:28px;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        <span data-en="Back to Work">رجوع لكل المشاريع</span>
-      </button>
-
-      <div style="margin-bottom:clamp(36px,5.5vh,52px);">
-        <h1 id="pdTitle" style="margin:0;color:var(--text);font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.12;letter-spacing:-.03em;max-width:20ch;"></h1>
-      </div>
-
-      <div style="margin-bottom:clamp(44px,7vh,64px);">
-        <div data-en="The Problem" style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:12px;letter-spacing:.22em;margin-bottom:14px;">المشكلة والسوق</div>
-        <p id="pdProblem" style="margin:0 0 24px;font-size:clamp(16px,1.6vw,19px);line-height:1.8;color:var(--text);"></p>
-        <div id="pdStats" style="display:flex;flex-wrap:wrap;gap:14px;"></div>
-      </div>
-
-      <div style="margin-bottom:clamp(44px,7vh,64px);">
-        <div data-en="The Solution" style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:12px;letter-spacing:.22em;margin-bottom:14px;">الحل</div>
-        <p id="pdDescription" style="margin:0 0 22px;color:var(--text-dim);line-height:1.85;font-size:15.5px;"></p>
-        <div id="pdTech" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
-      </div>
-
-      <div style="margin-bottom:clamp(44px,7vh,64px);">
-        <div data-en="Achievements" style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:12px;letter-spacing:.22em;margin-bottom:14px;">الإنجازات</div>
-        <div id="pdAchievements" style="display:flex;flex-direction:column;gap:10px;"></div>
-      </div>
-
-      <div>
-        <div data-en="Project Glimpse" style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:12px;letter-spacing:.22em;margin-bottom:14px;">لمحة من المشروع</div>
-        <div style="border-radius:18px;overflow:hidden;border:1px solid var(--glass-border);">
-          <img id="pdImage2" src="" style="width:100%;height:auto;display:block;" alt="">
-        </div>
-      </div>
-    </div>
-
-    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,6vw,80px) clamp(70px,10vh,100px);">
-      <div data-en="More projects" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.3em;color:var(--accent);margin-bottom:18px;text-align:center;">مشاريع أخرى</div>
-      <h2 data-en="Browse more of our work" style="margin:0 0 32px;text-align:center;font-weight:500;font-size:clamp(24px,3vw,36px);letter-spacing:-.03em;">تصفّح المزيد من أعمالنا</h2>
-      <div id="pdRelated" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;"></div>
-    </div>
-
-    <footer class="site-footer">
-      <div class="site-footer-inner site-footer-inner--center">
-        <div class="site-footer-copy" data-en="© 2026. All rights reserved.">© 2026 جميع الحقوق محفوظة.</div>
-      </div>
-    </footer>
-  </div>
-
-</div>
-
-<script src="assets/js/projects-data.js"></script>
-<script src="assets/js/common.js"></script>
-<script src="assets/js/work.js"></script>
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script src="assets/js/github-projects.js"></script><script src="assets/js/work-showcase.js"></script>
 </body>
 </html>
