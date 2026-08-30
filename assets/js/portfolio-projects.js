@@ -9,7 +9,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript", "Supabase", "GSAP", "Recharts"],
     metrics: { files: 58, source: 37, pages: 4, components: 11 },
     image: "assets/projects/captures/serein-mobile.jpg",
-    live: "https://massage-snowy.vercel.app",
     featured: true
   },
   {
@@ -22,7 +21,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript", "Supabase", "Capacitor"],
     metrics: { files: 214, source: 166, pages: 61, components: 12 },
     image: "assets/projects/captures/sayyir.jpg",
-    live: "https://sayyir.vercel.app",
     featured: true
   },
   {
@@ -35,7 +33,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript", "Three.js", "GSAP"],
     metrics: { files: 270, source: 48, pages: 2, components: 30 },
     image: "assets/projects/source/saudident-reception.webp",
-    live: "https://saudident.vercel.app",
     featured: true
   },
   {
@@ -48,7 +45,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["React", "Vite", "TypeScript"],
     metrics: { files: 75, source: 7, pages: 6, components: 1 },
     image: "assets/projects/captures/saudident-digital-platform.jpg",
-    live: "https://saudident-digital-platform.vercel.app",
   },
   {
     id: "project-05",
@@ -60,7 +56,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "Supabase", "Three.js", "GSAP", "Capacitor"],
     metrics: { files: 529, source: 230, pages: 73, components: 62 },
     image: "assets/projects/optimized/bunya-construction.jpg",
-    live: null,
     featured: true
   },
   {
@@ -73,7 +68,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     metrics: { files: 148, source: 110, pages: 11, components: 32 },
     image: "assets/projects/captures/alsalem.jpg",
-    live: "https://alsalem-tau.vercel.app",
   },
   {
     id: "project-07",
@@ -84,8 +78,7 @@ window.PORTFOLIO_PROJECTS = [
     description: "تطبيق Flutter عربي يجمع المهام والعادات والمواعيد والميزانية والذكريات في مكان واحد",
     tech: ["Flutter", "Dart", "iOS", "Android", "Local Storage"],
     metrics: { files: 406, source: 90, pages: 9, components: 0 },
-    image: null,
-    live: null,
+    image: "assets/projects/captures/routary.jpg",
   },
   {
     id: "project-08",
@@ -97,7 +90,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "Three.js", "GSAP", "Zustand"],
     metrics: { files: 147, source: 38, pages: 1, components: 18 },
     image: "assets/projects/captures/modawat.jpg",
-    live: "https://modawat.vercel.app",
     featured: true
   },
   {
@@ -110,7 +102,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase", "Zod"],
     metrics: { files: 1205, source: 467, pages: 93, components: 137 },
     image: "assets/projects/optimized/branda-preview.jpg",
-    live: null,
     featured: true
   },
   {
@@ -123,7 +114,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript"],
     metrics: { files: 83, source: 33, pages: 16, components: 11 },
     image: "assets/projects/captures/masar-platform.jpg",
-    live: "https://masar-platform-cyan.vercel.app",
   },
   {
     id: "project-11",
@@ -135,7 +125,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     metrics: { files: 27, source: 12, pages: 7, components: 1 },
     image: "assets/projects/captures/SERVIX111234.jpg",
-    live: "https://servix-111234.vercel.app",
   },
   {
     id: "project-12",
@@ -147,7 +136,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript"],
     metrics: { files: 56, source: 22, pages: 9, components: 8 },
     image: "assets/projects/captures/masar.jpg",
-    live: "https://masar-gamma-five.vercel.app",
   },
   {
     id: "project-13",
@@ -159,7 +147,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "React", "TypeScript"],
     metrics: { files: 21, source: 6, pages: 1, components: 1 },
     image: "assets/projects/captures/moroth.jpg",
-    live: "https://moroth.vercel.app",
   },
   {
     id: "project-14",
@@ -171,7 +158,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase", "AI"],
     metrics: { files: 46, source: 27, pages: 10, components: 0 },
     image: "assets/projects/optimized/athar-background.jpg",
-    live: null,
   },
   {
     id: "project-15",
@@ -183,7 +169,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase", "AI"],
     metrics: { files: 53, source: 34, pages: 9, components: 7 },
     image: "assets/projects/optimized/maren-hero.jpg",
-    live: null,
   },
   {
     id: "project-16",
@@ -195,7 +180,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Framer Motion"],
     metrics: { files: 28, source: 11, pages: 1, components: 8 },
     image: "assets/projects/captures/siwar.jpg",
-    live: "https://siwar-chi.vercel.app",
   },
   {
     id: "project-17",
@@ -207,7 +191,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "Supabase", "Framer Motion"],
     metrics: { files: 105, source: 82, pages: 63, components: 8 },
     image: "assets/projects/optimized/gms-dashboard.jpg",
-    live: null,
   },
   {
     id: "project-18",
@@ -219,7 +202,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "Supabase", "Framer Motion"],
     metrics: { files: 113, source: 90, pages: 71, components: 8 },
     image: "assets/projects/optimized/ashkal-industrial.jpg",
-    live: null,
   },
   {
     id: "project-19",
@@ -231,7 +213,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase"],
     metrics: { files: 26, source: 17, pages: 10, components: 1 },
     image: "assets/projects/captures/asir-valley1.jpg",
-    live: "https://asir-valley1.vercel.app",
   },
   {
     id: "project-20",
@@ -242,8 +223,7 @@ window.PORTFOLIO_PROJECTS = [
     description: "نموذج MVP بصري يختبر تتبع الهدف والعين داخل واجهة سريعة الحركة",
     tech: ["Next.js", "TypeScript", "Framer Motion"],
     metrics: { files: 20, source: 5, pages: 2, components: 1 },
-    image: null,
-    live: null,
+    image: "assets/projects/captures/optivio.jpg",
   },
   {
     id: "project-21",
@@ -255,7 +235,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Framer Motion", "Recharts", "AI"],
     metrics: { files: 36, source: 18, pages: 2, components: 12 },
     image: "assets/projects/optimized/ammar-3d.jpg",
-    live: null,
   },
   {
     id: "project-22",
@@ -266,8 +245,7 @@ window.PORTFOLIO_PROJECTS = [
     description: "منصة لخدمة القرآن بالذكاء الاصطناعي تجمع تصحيح التلاوة وترجمة الإشارة والمرشد القرآني",
     tech: ["Next.js", "React", "TypeScript", "Speech AI"],
     metrics: { files: 31, source: 15, pages: 9, components: 0 },
-    image: null,
-    live: null,
+    image: "assets/projects/captures/tadabbur.jpg",
   },
   {
     id: "project-23",
@@ -279,7 +257,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "Supabase", "Framer Motion", "Recharts", "Zod"],
     metrics: { files: 111, source: 51, pages: 14, components: 17 },
     image: "assets/projects/optimized/travel-riyadh.jpg",
-    live: null,
   },
   {
     id: "project-24",
@@ -290,7 +267,6 @@ window.PORTFOLIO_PROJECTS = [
     description: "منصة تحلل النصوص المسرحية وتبني التصور الإخراجي وتساعد على فهم الجمهور قبل اتخاذ القرار الفني",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI"],
     metrics: { files: 24, source: 9, pages: 3, components: 3 },
-    image: null,
-    live: null,
+    image: "assets/projects/captures/buad.jpg",
   }
 ];
