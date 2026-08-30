@@ -74,20 +74,6 @@ window.GITHUB_PROJECTS = [
     github: null
   },
   {
-    repo: "tadawi-hospital-dashboard",
-    title: "مركز قيادة تداوي",
-    kicker: "ذكاء تشغيلي / مستشفى",
-    category: "dashboard",
-    status: "source",
-    visibility: "private",
-    description: "لوحة قيادة للمستشفى تقرأ ملفات التشغيل وتحولها إلى مؤشرات ورسوم تساعد الإدارة على اتخاذ القرار",
-    tech: ["Next.js", "React", "TypeScript", "Recharts"],
-    metrics: { files: 15, source: 8, pages: 1, components: 1 },
-    image: null,
-    live: null,
-    github: null
-  },
-  {
     repo: "bunya-platform",
     title: "بُنية",
     kicker: "إنشاءات / منظومة متعددة القنوات",
@@ -161,20 +147,6 @@ window.GITHUB_PROJECTS = [
     featured: true
   },
   {
-    repo: "bunya",
-    title: "بُنية — النواة",
-    kicker: "مفهوم مبكر / مستودع محجوز",
-    category: "concept",
-    status: "concept",
-    visibility: "public",
-    description: "هذا هو المستودع الأول لمشروع بُنية ولا توجد فيه شيفرة منشورة حتى الآن",
-    tech: ["Concept"],
-    metrics: { files: 0, source: 0, pages: 0, components: 0 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/bunya"
-  },
-  {
     repo: "masar-platform",
     title: "مسار الزراعية",
     kicker: "AgriTech / إدارة ري وخدمات",
@@ -187,20 +159,6 @@ window.GITHUB_PROJECTS = [
     image: "assets/projects/captures/masar-platform.jpg",
     live: "https://masar-platform-cyan.vercel.app",
     github: "https://github.com/ahmedabumoalla/masar-platform"
-  },
-  {
-    repo: "barnda-demo",
-    title: "برندة — المختبر",
-    kicker: "منتج SaaS / نسخة تجريبية",
-    category: "platform",
-    status: "source",
-    visibility: "public",
-    description: "نسخة تجريبية اختبرت رحلة الحسابات ولوحات التشغيل وجمع البيانات قبل بناء النسخة الأساسية",
-    tech: ["Next.js", "TypeScript", "Supabase", "Zod"],
-    metrics: { files: 672, source: 364, pages: 91, components: 110 },
-    image: "assets/projects/optimized/barnda-reference.jpg",
-    live: null,
-    github: "https://github.com/ahmedabumoalla/barnda-demo"
   },
   {
     repo: "SERVIX111234",
@@ -273,48 +231,6 @@ window.GITHUB_PROJECTS = [
     github: "https://github.com/ahmedabumoalla/maren"
   },
   {
-    repo: "riwaq",
-    title: "رِواق",
-    kicker: "مطاعم / منصة تشغيل وولاء",
-    category: "platform",
-    status: "source",
-    visibility: "public",
-    description: "منصة تشغيل للكوفي تجمع الطلبات والعملاء والولاء والحملات والحجوزات والموظفين في لوحة واحدة",
-    tech: ["Next.js", "Supabase", "Framer Motion", "Zod"],
-    metrics: { files: 220, source: 201, pages: 62, components: 69 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/riwaq"
-  },
-  {
-    repo: "thamar_v1",
-    title: "ثمر",
-    kicker: "AgriTech / تشخيص نباتات",
-    category: "ai",
-    status: "source",
-    visibility: "public",
-    description: "نظام زراعي يحلل صور النباتات ويشخص الأمراض والآفات ثم يقدم خطة علاج وخيار استشارة خبير",
-    tech: ["Next.js", "TypeScript", "Supabase", "AI"],
-    metrics: { files: 57, source: 41, pages: 26, components: 3 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/thamar_v1"
-  },
-  {
-    repo: "thamar",
-    title: "ثمر — النواة",
-    kicker: "مفهوم مبكر / مستودع محجوز",
-    category: "concept",
-    status: "concept",
-    visibility: "public",
-    description: "هذا هو المستودع الأول لثمر والنسخة الفعلية موجودة في thamar_v1",
-    tech: ["Concept"],
-    metrics: { files: 0, source: 0, pages: 0, components: 0 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/thamar"
-  },
-  {
     repo: "siwar",
     title: "سِوار",
     kicker: "استدامة / مجتمع وتقنية",
@@ -369,48 +285,6 @@ window.GITHUB_PROJECTS = [
     image: "assets/projects/captures/asir-valley1.jpg",
     live: "https://asir-valley1.vercel.app",
     github: "https://github.com/ahmedabumoalla/asir-valley1"
-  },
-  {
-    repo: "asir-valley",
-    title: "عسير فالي — النواة",
-    kicker: "مفهوم مبكر / مستودع محجوز",
-    category: "concept",
-    status: "concept",
-    visibility: "public",
-    description: "هذا هو المستودع الأول للمشروع والنسخة العاملة موجودة في asir-valley1",
-    tech: ["Concept"],
-    metrics: { files: 0, source: 0, pages: 0, components: 0 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/asir-valley"
-  },
-  {
-    repo: "GMS-platform",
-    title: "GMS Core",
-    kicker: "عمليات / نواة منصة",
-    category: "industry",
-    status: "source",
-    visibility: "public",
-    description: "النواة الأولى لمنصة خدمات فنية تربط واجهات التشغيل بقاعدة Supabase ومسارات الإدارة",
-    tech: ["Next.js", "TypeScript", "Supabase"],
-    metrics: { files: 37, source: 21, pages: 5, components: 5 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/GMS-platform"
-  },
-  {
-    repo: "Ahmed-Platform",
-    title: "Ahmed Platform",
-    kicker: "خدمات تقنية / منصة شخصية",
-    category: "experience",
-    status: "source",
-    visibility: "public",
-    description: "منصة خدمات تقنية تعرض بناء المنصات والهوية والتصميم ثلاثي الأبعاد ودراسات الجدوى",
-    tech: ["Next.js", "TypeScript", "Supabase", "Zod"],
-    metrics: { files: 32, source: 17, pages: 5, components: 5 },
-    image: null,
-    live: null,
-    github: "https://github.com/ahmedabumoalla/Ahmed-Platform"
   },
   {
     repo: "optivio",
