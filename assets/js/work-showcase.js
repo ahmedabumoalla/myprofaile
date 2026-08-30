@@ -116,7 +116,7 @@
     const actions = [];
     if (project.live) actions.push(`<a href="${escapeHtml(project.live)}" target="_blank" rel="noreferrer">فتح النسخة المنشورة <span>↗</span></a>`);
     if (project.github) actions.push(`<a href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">عرض المستودع <span>↗</span></a>`);
-    actions.push(`<a href="https://wa.me/966508424401?text=${encodeURIComponent(`مرحبًا، شاهدت مشروع ${project.title} وأرغب في مناقشة مشروع مشابه.`)}" target="_blank" rel="noreferrer">اطلب نظامًا مشابهًا <span>↗</span></a>`);
+    actions.push(`<a href="https://wa.me/966508424401?text=${encodeURIComponent(`مرحبًا شاهدت مشروع ${project.title} وأرغب في مناقشة مشروع مشابه`)}" target="_blank" rel="noreferrer">اطلب نظامًا مشابهًا <span>↗</span></a>`);
     document.getElementById("modalActions").innerHTML = actions.join("");
   }
 
