@@ -8,6 +8,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "work.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "assets/**",
       "use": "@vercel/static"
     }
@@ -16,6 +20,14 @@
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
+    },
+    {
+      "src": "/work.html",
+      "dest": "/work.html"
+    },
+    {
+      "src": "/work",
+      "dest": "/work.html"
     },
     {
       "src": "/(.*)",
