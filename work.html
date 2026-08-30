@@ -3,66 +3,161 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="24 مشروع حقيقي من مستودعات GitHub تشمل منصات وذكاء اصطناعي ولوحات تشغيل وتجارب تفاعلية">
-  <title>المشاريع — هندسة رقمية من الفكرة إلى التشغيل</title>
+  <meta name="theme-color" content="#070908">
+  <meta name="description" content="أرشيف يضم 24 منتج رقمي حقيقي من منصات وأنظمة ذكاء اصطناعي ولوحات تشغيل وتجارب تفاعلية">
+  <title>الأعمال الرقمية — أحمد أبو معلا</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/work-showcase.css">
 </head>
 <body>
-  <a class="skip-link" href="#projectGrid">انتقل إلى المشاريع</a>
+  <a class="skip-link" href="#archive">انتقل إلى أرشيف المشاريع</a>
+
   <header class="topbar" id="topbar">
-    <a class="wordmark" href="index.html" aria-label="العودة للرئيسية"><span class="wordmark__mark" aria-hidden="true"></span><span>AHMED / DIGITAL SYSTEMS</span></a>
+    <a class="wordmark" href="index.html" aria-label="العودة للرئيسية">
+      <span class="wordmark__mark" aria-hidden="true">A</span>
+      <span>AHMED / DIGITAL SYSTEMS</span>
+    </a>
     <nav class="topbar__nav" aria-label="التنقل الرئيسي">
-      <a href="index.html">الرئيسية</a><a href="#archive" aria-current="page">المشاريع</a>
-      <a class="topbar__cta" href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ناقش مشروعك <span>↗</span></a>
+      <a href="index.html">الرئيسية</a>
+      <a href="#selected">مختارات</a>
+      <a href="#archive" aria-current="page">الأرشيف</a>
+      <a href="#capabilities">القدرات</a>
     </nav>
+    <a class="topbar__cta" href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ابدأ مشروعك <span>↗</span></a>
   </header>
+
   <main>
     <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero__grid" aria-hidden="true"></div><div class="hero__orb hero__orb--one" aria-hidden="true"></div><div class="hero__orb hero__orb--two" aria-hidden="true"></div>
-      <div class="hero__eyebrow reveal"><span class="signal"><i></i> سجل المشاريع / 2026</span><span>بيانات مستخرجة من GitHub مباشرة</span></div>
+      <div class="hero__texture" aria-hidden="true"></div>
       <div class="hero__copy reveal">
-        <h1 id="heroTitle"><span>24 مشروع فعلي</span><br>شوف الشغل بنفسك</h1>
-        <p>هنا تشوف المشاريع مثل ما هي من الواجهة إلى قاعدة البيانات والتشغيل وكل رقم معروض مأخوذ من ملفات المشروع نفسه</p>
-      </div>
-      <div class="hero__proof reveal" aria-label="إحصاءات المستودعات">
-        <div class="proof-cell"><strong>24</strong><span>مشروع فعلي</span></div><div class="proof-cell"><strong>1,625</strong><span>ملف مصدر</span></div><div class="proof-cell"><strong>487</strong><span>شاشة ومسار</span></div><div class="proof-cell"><strong>389</strong><span>مكوّن واجهة</span></div>
-      </div>
-      <a class="hero__scroll" href="#featured"><span>استكشف الأنظمة</span><i aria-hidden="true"></i></a>
-    </section>
-    <section class="featured section-shell" id="featured" aria-labelledby="featuredTitle">
-      <div class="section-heading reveal"><div><span class="section-kicker">SELECTED SYSTEMS / 01</span><h2 id="featuredTitle">مشاريع تستحق الوقوف عندها</h2></div><p>الصور من المشاريع نفسها سواء من النسخة المنشورة أو من ملفات المستودع</p></div>
-      <div class="featured-stage" id="featuredStage"></div>
-    </section>
-    <section class="archive section-shell" id="archive" aria-labelledby="archiveTitle">
-      <div class="section-heading section-heading--archive reveal"><div><span class="section-kicker">FULL REPOSITORY / 02</span><h2 id="archiveTitle">السجل الكامل</h2></div><div class="archive-count"><span id="visibleCount">24</span><small>مشروعًا ظاهرًا</small></div></div>
-      <div class="project-controls reveal" id="projectControls">
-        <label class="search-field"><span class="sr-only">ابحث في المشاريع</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg><input id="projectSearch" type="search" placeholder="ابحث بالاسم أو التقنية" autocomplete="off"></label>
-        <div class="filter-list" id="filterList" role="group" aria-label="تصفية المشاريع">
-          <button class="filter-button is-active" type="button" data-filter="all">الكل <span>24</span></button><button class="filter-button" type="button" data-filter="platform">منصات</button><button class="filter-button" type="button" data-filter="ai">ذكاء اصطناعي</button><button class="filter-button" type="button" data-filter="dashboard">لوحات تشغيل</button><button class="filter-button" type="button" data-filter="experience">تجارب</button><button class="filter-button" type="button" data-filter="industry">صناعة</button><button class="filter-button" type="button" data-filter="mobile">موبايل</button>
+        <span class="eyebrow"><i></i> سجل المنتجات الرقمية / 2026</span>
+        <h1 id="heroTitle"><span>24 منتجًا</span>رقميًا</h1>
+        <p class="hero__statement">صُممت وبُنيت وأُطلقت</p>
+        <p class="hero__description">هذا ليس معرض صور بل سجل لمنتجات حقيقية بدأت من فكرة ووصلت إلى نظام جاهز للتشغيل</p>
+        <div class="hero__metrics" aria-label="إحصاءات المشاريع">
+          <div><strong>1,625</strong><span>ملف مصدر</span></div>
+          <div><strong>487</strong><span>شاشة ومسار</span></div>
+          <div><strong>389</strong><span>مكوّن واجهة</span></div>
+          <div><strong>24</strong><span>منتج رقمي</span></div>
         </div>
+        <a class="outline-link" href="#selected">استكشف الأعمال <span>←</span></a>
       </div>
-      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
-      <div class="empty-result" id="emptyResult" hidden><span>NO_MATCH</span><h3>لا توجد نتيجة بهذا البحث</h3><button type="button" id="resetFilters">عرض كل المشاريع</button></div>
+
+      <div class="hero__visual reveal" aria-label="معاينة مشروع سيّر على عدة شاشات">
+        <div class="device device--desktop"><span class="device__bar"><i></i><i></i><i></i></span><img src="assets/projects/captures/sayyir.jpg" alt="واجهة مشروع سيّر على شاشة مكتبية"></div>
+        <div class="device device--tablet"><span class="device__bar"><i></i><i></i><i></i></span><img src="assets/projects/captures/sayyir.jpg" alt="واجهة مشروع سيّر على جهاز لوحي"></div>
+        <div class="device device--mobile"><span class="device__speaker"></span><img src="assets/projects/captures/sayyir.jpg" alt="واجهة مشروع سيّر على الجوال"></div>
+        <span class="hero__visual-label">واجهة حقيقية من مشروع سيّر</span>
+      </div>
+
+      <div class="discipline-bar" aria-label="مجالات العمل">
+        <span><i>01</i> منصات رقمية</span>
+        <span><i>02</i> ذكاء اصطناعي</span>
+        <span><i>03</i> لوحات تشغيل</span>
+        <span><i>04</i> تجارب تفاعلية</span>
+        <span><i>05</i> حلول صناعية</span>
+        <span><i>06</i> تطبيقات موبايل</span>
+      </div>
     </section>
-    <section class="capabilities section-shell" aria-labelledby="capabilitiesTitle">
-      <div class="section-heading reveal"><div><span class="section-kicker">ENGINEERING RANGE / 03</span><h2 id="capabilitiesTitle">أشتغل على المنتج من أوله إلى آخره</h2></div><p>أختار التقنية على حسب حاجة المشروع وأبني كل جزء ليخدم المستخدم والشغل اليومي</p></div>
-      <div class="capability-matrix reveal"><article><span>01</span><h3>Product & UX</h3><p>أرتب رحلة المستخدم وأبني نظام تصميم واضح يدعم العربية والوصول</p></article><article><span>02</span><h3>Frontend Systems</h3><p>أبني الواجهات بـ Next.js وReact وTypeScript مع حركة و3D بأداء ثابت</p></article><article><span>03</span><h3>Data & Operations</h3><p>أربط Supabase والصلاحيات ومسارات API بلوحات الإدارة والتقارير</p></article><article><span>04</span><h3>AI & Intelligence</h3><p>أضيف تحليل الصور والمخططات والتوصيات والمساعدين الأذكياء وقت ما يحتاجها المنتج</p></article><article><span>05</span><h3>Shipping</h3><p>أسلّم منتج متجاوب ومختبر وجاهز للنشر على الويب والموبايل</p></article></div>
+
+    <section class="selected section-shell" id="selected" aria-labelledby="selectedTitle">
+      <aside class="section-intro reveal">
+        <span class="section-index">01 / مختارات</span>
+        <h2 id="selectedTitle">أعمال تختصر طريقة الشغل</h2>
+        <p>من قرار التصميم إلى أدق مسار داخل النظام كل تفصيلة هنا لها سبب واضح</p>
+        <a href="#archive">شاهد جميع المشاريع <span>←</span></a>
+      </aside>
+      <div class="selected-grid" id="featuredStage"></div>
     </section>
-    <section class="contact-cta" id="contact"><div class="contact-cta__grid" aria-hidden="true"></div><div class="contact-cta__index">NEXT<br>BUILD</div><div class="contact-cta__copy reveal"><span>عندك فكرة وتبغى تحولها إلى منتج فعلي</span><h2>خلنا نبنيها<br>صح</h2><a href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ابدأ محادثة مباشرة <i>↗</i></a></div><div class="contact-cta__meta"><span>+966 50 842 4401</span><span>المملكة العربية السعودية</span></div></section>
+
+    <section class="archive section-shell" id="archive" aria-labelledby="archiveTitle">
+      <aside class="archive__sidebar reveal">
+        <span class="section-index">02 / الأرشيف</span>
+        <h2 id="archiveTitle">السجل الكامل</h2>
+        <strong><span id="visibleCount">24</span> مشروع</strong>
+        <p>كل مشروع موثق بواجهاته وتقنياته وحجم بنائه الحقيقي</p>
+        <label class="search-field">
+          <span class="sr-only">ابحث في المشاريع</span>
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
+          <input id="projectSearch" type="search" placeholder="ابحث بالاسم أو التقنية" autocomplete="off">
+        </label>
+        <div class="filter-list" id="filterList" role="group" aria-label="تصفية المشاريع">
+          <button class="filter-button is-active" type="button" data-filter="all">جميع المشاريع <span>24</span></button>
+          <button class="filter-button" type="button" data-filter="platform">المنصات</button>
+          <button class="filter-button" type="button" data-filter="ai">الذكاء الاصطناعي</button>
+          <button class="filter-button" type="button" data-filter="dashboard">لوحات التشغيل</button>
+          <button class="filter-button" type="button" data-filter="experience">التجارب</button>
+          <button class="filter-button" type="button" data-filter="industry">الصناعة</button>
+          <button class="filter-button" type="button" data-filter="mobile">الموبايل</button>
+        </div>
+      </aside>
+
+      <div class="archive__content reveal">
+        <div class="archive__head"><span>المشروع</span><span>المجال</span><span>الحالة</span></div>
+        <div class="archive-list" id="archiveList" aria-live="polite"></div>
+        <div class="empty-result" id="emptyResult" hidden><h3>لا توجد نتيجة بهذا البحث</h3><button type="button" id="resetFilters">عرض كل المشاريع</button></div>
+      </div>
+    </section>
+
+    <section class="project-focus section-shell" id="projectFocus" aria-live="polite"></section>
+
+    <section class="capabilities section-shell" id="capabilities" aria-labelledby="capabilitiesTitle">
+      <div class="capabilities__intro reveal">
+        <span class="section-index">03 / القدرات</span>
+        <h2 id="capabilitiesTitle">منتج واحد بخبرة تغطيه كاملًا</h2>
+        <p>أتعامل مع المنتج كوحدة واحدة لذلك لا تتفكك التجربة بين التصميم والبرمجة والتشغيل</p>
+        <a href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ناقش طريقة العمل <span>←</span></a>
+      </div>
+      <div class="capability-grid reveal">
+        <article><span>01</span><h3>استراتيجية المنتج</h3><p>فهم الفكرة وتحديد المسارات وصناعة تجربة تخدم هدف المشروع</p></article>
+        <article><span>02</span><h3>هندسة الواجهات</h3><p>واجهات عربية دقيقة وسريعة ومتجاوبة على كل شاشة</p></article>
+        <article><span>03</span><h3>البيانات والتشغيل</h3><p>قواعد بيانات وصلاحيات ولوحات إدارة وتقارير قابلة للاعتماد</p></article>
+        <article><span>04</span><h3>الذكاء الاصطناعي</h3><p>تحليل وتوصيات ومساعدون أذكياء داخل رحلة استخدام واضحة</p></article>
+        <article><span>05</span><h3>الإطلاق والتوسع</h3><p>اختبارات ونشر ومراقبة وتحسين مستمر بعد وصول المنتج للسوق</p></article>
+      </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+      <span class="contact-cta__label">المشروع القادم</span>
+      <div class="contact-cta__copy reveal">
+        <p>مشروعك القادم يستحق بناءً يليق به</p>
+        <h2>خلنا نبدأ من الفكرة<br>ونوصل إلى منتج جاهز للسوق</h2>
+        <a href="https://wa.me/966508424401" target="_blank" rel="noreferrer">ابدأ المحادثة <span>↗</span></a>
+      </div>
+      <div class="contact-cta__meta"><span>+966 50 842 4401</span><span>المملكة العربية السعودية</span></div>
+    </section>
   </main>
-  <footer class="footer"><span>© 2026 — جميع المشاريع موثّقة من مستودعاتها</span><a href="#topbar">العودة للأعلى ↑</a></footer>
+
+  <footer class="footer">
+    <a class="wordmark" href="#topbar"><span class="wordmark__mark" aria-hidden="true">A</span><span>AHMED / DIGITAL SYSTEMS</span></a>
+    <p>أبني منتجات رقمية تحل مشكلة حقيقية وتبقى قابلة للنمو</p>
+    <nav aria-label="روابط التذييل"><a href="index.html">الرئيسية</a><a href="#archive">المشاريع</a><a href="#capabilities">القدرات</a><a href="https://wa.me/966508424401" target="_blank" rel="noreferrer">تواصل</a></nav>
+    <span>© 2026</span>
+  </footer>
+
   <div class="project-modal" id="projectModal" aria-hidden="true">
     <button class="project-modal__backdrop" type="button" data-close-modal aria-label="إغلاق التفاصيل"></button>
-    <section class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <header class="project-modal__header"><span id="modalIndex">CASE / 01</span><button type="button" data-close-modal>إغلاق <kbd>ESC</kbd></button></header>
-      <div class="project-modal__body"><div class="modal-visual" id="modalVisual"></div><div class="modal-content"><div class="modal-status" id="modalStatus"></div><p class="modal-kicker" id="modalKicker"></p><h2 id="modalTitle"></h2><p class="modal-description" id="modalDescription"></p><div class="modal-metrics" id="modalMetrics"></div><div class="modal-section"><span>TECHNOLOGY STACK</span><div class="modal-tech" id="modalTech"></div></div><div class="modal-actions" id="modalActions"></div></div></div>
-      <div class="project-modal__nav"><button type="button" id="modalPrev"><span>←</span> السابق</button><span id="modalPosition">01 / 24</span><button type="button" id="modalNext">التالي <span>→</span></button></div>
+    <section class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <header class="project-modal__header"><span id="modalIndex">المشروع / 01</span><button type="button" data-close-modal>إغلاق <kbd>ESC</kbd></button></header>
+      <div class="project-modal__body">
+        <div class="modal-visual" id="modalVisual"></div>
+        <div class="modal-content">
+          <div class="modal-status" id="modalStatus"></div>
+          <p class="modal-kicker" id="modalKicker"></p>
+          <h2 id="modalTitle"></h2>
+          <p class="modal-description" id="modalDescription"></p>
+          <div class="modal-metrics" id="modalMetrics"></div>
+          <div class="modal-section"><span>التقنيات المستخدمة</span><div class="modal-tech" id="modalTech"></div></div>
+          <div class="modal-actions" id="modalActions"></div>
+        </div>
+      </div>
+      <div class="project-modal__nav"><button type="button" id="modalPrev"><span>→</span> السابق</button><span id="modalPosition">01 / 24</span><button type="button" id="modalNext">التالي <span>←</span></button></div>
     </section>
   </div>
-  <script src="assets/js/github-projects.js"></script><script src="assets/js/work-showcase.js"></script>
+
+  <script src="assets/js/github-projects.js"></script>
+  <script src="assets/js/work-showcase.js"></script>
 </body>
 </html>

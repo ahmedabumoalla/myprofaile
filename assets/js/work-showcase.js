@@ -2,39 +2,49 @@
   "use strict";
 
   const projects = Array.isArray(window.GITHUB_PROJECTS) ? window.GITHUB_PROJECTS : [];
-  const featuredRepos = ["serein-mobile", "modawat", "branda"];
+  const featuredRepos = ["sayyir", "serein-mobile", "modawat", "branda"];
   const categoryLabels = {
     platform: "منصة رقمية",
     ai: "ذكاء اصطناعي",
     dashboard: "لوحة تشغيل",
-    experience: "تجربة رقمية",
+    experience: "تجربة تفاعلية",
     industry: "حل صناعي",
     health: "صحة رقمية",
-    mobile: "تطبيق موبايل",
-    concept: "نواة مبكرة"
+    mobile: "تطبيق موبايل"
   };
   const statusLabels = {
-    live: "LIVE SYSTEM",
-    source: "SOURCE VERIFIED",
-    concept: "EARLY CONCEPT"
+    live: "منشور",
+    source: "موثّق من المصدر",
+    concept: "في مرحلة مبكرة"
+  };
+  const visibilityLabels = {
+    private: "مستودع خاص",
+    public: "مستودع عام"
   };
 
-  const grid = document.getElementById("projectGrid");
   const featuredStage = document.getElementById("featuredStage");
+  const archiveList = document.getElementById("archiveList");
+  const projectFocus = document.getElementById("projectFocus");
   const visibleCount = document.getElementById("visibleCount");
   const emptyResult = document.getElementById("emptyResult");
   const search = document.getElementById("projectSearch");
   const filterList = document.getElementById("filterList");
   const modal = document.getElementById("projectModal");
   const modalPanel = modal.querySelector(".project-modal__panel");
+
   let activeFilter = "all";
   let visibleProjects = projects.slice();
+  let selectedProject = projects.find((project) => project.repo === "sayyir") || projects[0] || null;
   let activeModalIndex = -1;
   let lastFocused = null;
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (char) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "'": "&#39;",
+      '"': "&quot;"
     })[char]);
   }
 
@@ -44,79 +54,133 @@
 
   function projectVisual(project, kind) {
     if (project.image) {
-      return `<img src="${escapeHtml(project.image)}" alt="واجهة مشروع ${escapeHtml(project.title)}" loading="${kind === "featured" ? "eager" : "lazy"}" decoding="async">`;
+      return `<img src="${escapeHtml(project.image)}" alt="واجهة مشروع ${escapeHtml(project.title)}" loading="${kind === "hero" ? "eager" : "lazy"}" decoding="async">`;
     }
+
     const stack = project.tech.slice(0, 4);
-    const state = project.status === "concept" ? "repository.awaiting(firstCommit)" : "system.compose(modules)";
-    return `<div class="tech-visual" aria-hidden="true"><div class="tech-visual__code"><b>${escapeHtml(project.repo)}</b><span>const system = <em>${escapeHtml(state)}</em>;</span><span>stack: [${stack.map((item) => `"${escapeHtml(item)}"`).join(", ")}]</span><span>routes: ${project.metrics.pages} / source: ${project.metrics.source}</span></div></div>`;
+    return `<div class="tech-visual" aria-hidden="true"><div class="tech-visual__code"><b>${escapeHtml(project.repo)}</b><span>system.compose(modules)</span><span>stack [${stack.map((item) => escapeHtml(item)).join(" / ")}]</span><span>routes ${project.metrics.pages} / source ${project.metrics.source}</span></div></div>`;
   }
 
   function renderFeatured() {
-    const selected = featuredRepos.map((repo) => projects.find((item) => item.repo === repo)).filter(Boolean);
+    const selected = featuredRepos.map((repo) => projects.find((project) => project.repo === repo)).filter(Boolean);
     featuredStage.innerHTML = selected.map((project, index) => `
-      <article class="featured-card reveal" tabindex="0" role="button" data-repo="${escapeHtml(project.repo)}" aria-label="عرض تفاصيل ${escapeHtml(project.title)}">
-        ${projectVisual(project, "featured")}
-        <div class="featured-card__top"><span>CASE / ${pad(index + 1)}</span><span>${escapeHtml(statusLabels[project.status])}</span></div>
-        <div class="featured-card__content">
+      <article class="selected-card ${index === 0 ? "selected-card--lead" : "selected-card--small"} reveal" tabindex="0" role="button" data-open-project="${escapeHtml(project.repo)}" aria-label="عرض تفاصيل ${escapeHtml(project.title)}">
+        <div class="selected-card__visual">${projectVisual(project, index === 0 ? "hero" : "card")}</div>
+        <span class="selected-card__number">${pad(index + 1)}</span>
+        <div class="selected-card__content">
+          <span>${escapeHtml(categoryLabels[project.category] || project.kicker)}</span>
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.description)}</p>
-          <div class="featured-card__meta">${project.tech.slice(0, 5).map((tech) => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
+          <div class="selected-card__meta">${project.tech.slice(0, 4).map((tech) => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
         </div>
+        <span class="selected-card__arrow" aria-hidden="true">↗</span>
       </article>`).join("");
   }
 
-  function renderGrid() {
+  function renderArchive() {
     const term = search.value.trim().toLocaleLowerCase("ar");
     visibleProjects = projects.filter((project) => {
       const matchesFilter = activeFilter === "all" || project.category === activeFilter;
-      const haystack = [project.title, project.repo, project.kicker, project.description, ...project.tech].join(" ").toLocaleLowerCase("ar");
-      return matchesFilter && (!term || haystack.includes(term));
+      const searchable = [project.title, project.repo, project.kicker, project.description, ...project.tech].join(" ").toLocaleLowerCase("ar");
+      return matchesFilter && (!term || searchable.includes(term));
     });
 
     visibleCount.textContent = visibleProjects.length;
     emptyResult.hidden = visibleProjects.length !== 0;
-    grid.hidden = visibleProjects.length === 0;
-    grid.innerHTML = visibleProjects.map((project) => {
-      const trueIndex = projects.indexOf(project);
-      const statusClass = project.status === "live" ? "live" : project.status === "source" ? "source" : "concept";
-      return `<article class="project-card ${project.status === "concept" ? "project-card--concept" : ""}" tabindex="0" role="button" data-repo="${escapeHtml(project.repo)}" aria-label="عرض تفاصيل ${escapeHtml(project.title)}">
-        <div class="project-card__visual">
-          ${projectVisual(project, "card")}
-          <span class="project-card__badge project-card__badge--${statusClass}"><i></i>${escapeHtml(statusLabels[project.status])}</span>
-        </div>
-        <div class="project-card__content">
-          <div class="project-card__index"><span>PROJECT / ${pad(trueIndex + 1)}</span><span>${escapeHtml(categoryLabels[project.category] || project.kicker)}</span></div>
-          <h3>${escapeHtml(project.title)}</h3>
-          <p class="project-card__repo">github.com/ahmedabumoalla/${escapeHtml(project.repo)}</p>
-          <p class="project-card__description">${escapeHtml(project.description)}</p>
-          <div class="project-card__footer">
-            <span class="project-card__open" aria-hidden="true">↗</span>
-            <div class="project-card__stack">${project.tech.slice(0, 5).map((tech) => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
-          </div>
-        </div>
-      </article>`;
+    archiveList.hidden = visibleProjects.length === 0;
+
+    if (visibleProjects.length && !visibleProjects.includes(selectedProject)) {
+      selectedProject = visibleProjects[0];
+    }
+
+    archiveList.innerHTML = visibleProjects.map((project) => {
+      const index = projects.indexOf(project);
+      return `<button class="archive-row ${project === selectedProject ? "is-active" : ""}" type="button" data-select-project="${escapeHtml(project.repo)}" aria-pressed="${project === selectedProject ? "true" : "false"}">
+        <span class="archive-row__number">${pad(index + 1)}</span>
+        <span class="archive-row__title">${escapeHtml(project.title)}</span>
+        <span class="archive-row__category">${escapeHtml(categoryLabels[project.category] || project.kicker)}</span>
+        <span class="archive-row__status">${escapeHtml(statusLabels[project.status])}</span>
+        <span class="archive-row__arrow" aria-hidden="true">←</span>
+      </button>`;
     }).join("");
+
+    renderProjectFocus();
+  }
+
+  function renderProjectFocus() {
+    if (!selectedProject) {
+      projectFocus.innerHTML = "";
+      return;
+    }
+
+    const project = selectedProject;
+    const index = projects.indexOf(project);
+    const primaryAction = project.live
+      ? `<a href="${escapeHtml(project.live)}" target="_blank" rel="noreferrer">فتح النسخة المنشورة <span>↗</span></a>`
+      : "";
+
+    projectFocus.innerHTML = `
+      <div class="focus-copy">
+        <span class="focus-copy__number">المشروع / ${pad(index + 1)}</span>
+        <p class="focus-copy__kicker">${escapeHtml(project.kicker)}</p>
+        <h2>${escapeHtml(project.title)}</h2>
+        <p class="focus-copy__description">${escapeHtml(project.description)}</p>
+        <div class="focus-details">
+          <div><small>الحالة</small><strong>${escapeHtml(statusLabels[project.status])}</strong></div>
+          <div><small>النوع</small><strong>${escapeHtml(categoryLabels[project.category] || "منتج رقمي")}</strong></div>
+          <div><small>الشاشات والمسارات</small><strong>${project.metrics.pages.toLocaleString("en-US")}</strong></div>
+          <div><small>ملفات المصدر</small><strong>${project.metrics.source.toLocaleString("en-US")}</strong></div>
+        </div>
+        <div class="focus-actions">
+          <button type="button" data-open-project="${escapeHtml(project.repo)}">دراسة المشروع <span>←</span></button>
+          ${primaryAction}
+        </div>
+      </div>
+      <div class="focus-visual">
+        <div class="focus-visual__frame">
+          ${projectVisual(project, "hero")}
+          <span class="focus-visual__badge">${escapeHtml(statusLabels[project.status])}</span>
+        </div>
+        <div class="focus-thumbs">
+          <span>${project.image ? `<img src="${escapeHtml(project.image)}" alt="معاينة مصغرة لمشروع ${escapeHtml(project.title)}">` : "UI"}</span>
+          ${project.tech.slice(0, 4).map((tech) => `<span>${escapeHtml(tech)}</span>`).join("")}
+        </div>
+      </div>`;
+  }
+
+  function selectProject(repo) {
+    const project = projects.find((item) => item.repo === repo);
+    if (!project) return;
+    selectedProject = project;
+    archiveList.querySelectorAll("[data-select-project]").forEach((row) => {
+      const active = row.dataset.selectProject === repo;
+      row.classList.toggle("is-active", active);
+      row.setAttribute("aria-pressed", String(active));
+    });
+    renderProjectFocus();
   }
 
   function renderModal(project) {
     const projectIndex = projects.indexOf(project);
-    const image = document.getElementById("modalVisual");
-    image.innerHTML = projectVisual(project, "modal");
-    document.getElementById("modalIndex").textContent = `CASE / ${pad(projectIndex + 1)} — ${project.repo}`;
+    document.getElementById("modalVisual").innerHTML = projectVisual(project, "hero");
+    document.getElementById("modalIndex").textContent = `المشروع / ${pad(projectIndex + 1)} — ${project.repo}`;
     document.getElementById("modalPosition").textContent = `${pad(projectIndex + 1)} / ${pad(projects.length)}`;
     document.getElementById("modalKicker").textContent = project.kicker;
     document.getElementById("modalTitle").textContent = project.title;
     document.getElementById("modalDescription").textContent = project.description;
-    document.getElementById("modalStatus").innerHTML = `<span>${escapeHtml(statusLabels[project.status])}</span><span>${project.visibility === "private" ? "PRIVATE REPOSITORY" : "PUBLIC REPOSITORY"}</span><span>${escapeHtml(categoryLabels[project.category] || "DIGITAL SYSTEM")}</span>`;
+    document.getElementById("modalStatus").innerHTML = `<span>${escapeHtml(statusLabels[project.status])}</span><span>${escapeHtml(visibilityLabels[project.visibility])}</span><span>${escapeHtml(categoryLabels[project.category] || "منتج رقمي")}</span>`;
     document.getElementById("modalMetrics").innerHTML = [
-      [project.metrics.files, "ملفًا"], [project.metrics.source, "ملف مصدر"], [project.metrics.pages, "شاشة / مسار"], [project.metrics.components, "مكوّنًا"]
+      [project.metrics.files, "ملف"],
+      [project.metrics.source, "ملف مصدر"],
+      [project.metrics.pages, "شاشة ومسار"],
+      [project.metrics.components, "مكوّن واجهة"]
     ].map(([value, label]) => `<div><strong>${Number(value).toLocaleString("en-US")}</strong><small>${label}</small></div>`).join("");
     document.getElementById("modalTech").innerHTML = project.tech.map((tech) => `<span>${escapeHtml(tech)}</span>`).join("");
 
     const actions = [];
     if (project.live) actions.push(`<a href="${escapeHtml(project.live)}" target="_blank" rel="noreferrer">فتح النسخة المنشورة <span>↗</span></a>`);
     if (project.github) actions.push(`<a href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">عرض المستودع <span>↗</span></a>`);
-    actions.push(`<a href="https://wa.me/966508424401?text=${encodeURIComponent(`مرحبًا شاهدت مشروع ${project.title} وأرغب في مناقشة مشروع مشابه`)}" target="_blank" rel="noreferrer">اطلب نظامًا مشابهًا <span>↗</span></a>`);
+    actions.push(`<a href="https://wa.me/966508424401?text=${encodeURIComponent(`مرحبًا شاهدت مشروع ${project.title} وأرغب في مناقشة مشروع مشابه`)}" target="_blank" rel="noreferrer">اطلب مشروعًا مشابهًا <span>↗</span></a>`);
     document.getElementById("modalActions").innerHTML = actions.join("");
   }
 
@@ -130,7 +194,7 @@
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
     if (shouldUpdateHash) history.replaceState(null, "", `#project=${encodeURIComponent(project.repo)}`);
-    requestAnimationFrame(() => modalPanel.focus?.());
+    requestAnimationFrame(() => modalPanel.focus());
   }
 
   function closeModal(shouldUpdateHash = true) {
@@ -145,23 +209,46 @@
   function stepModal(direction) {
     if (activeModalIndex < 0) return;
     activeModalIndex = (activeModalIndex + direction + projects.length) % projects.length;
-    renderModal(projects[activeModalIndex]);
-    history.replaceState(null, "", `#project=${encodeURIComponent(projects[activeModalIndex].repo)}`);
+    const project = projects[activeModalIndex];
+    renderModal(project);
+    history.replaceState(null, "", `#project=${encodeURIComponent(project.repo)}`);
     modalPanel.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function cardInteraction(event) {
-    const card = event.target.closest("[data-repo]");
-    if (!card) return;
+  function openProjectInteraction(event) {
+    const trigger = event.target.closest("[data-open-project]");
+    if (!trigger) return;
     if (event.type === "keydown" && event.key !== "Enter" && event.key !== " ") return;
     if (event.type === "keydown") event.preventDefault();
-    openModal(card.dataset.repo);
+    openModal(trigger.dataset.openProject);
   }
 
-  featuredStage.addEventListener("click", cardInteraction);
-  featuredStage.addEventListener("keydown", cardInteraction);
-  grid.addEventListener("click", cardInteraction);
-  grid.addEventListener("keydown", cardInteraction);
+  featuredStage.addEventListener("click", openProjectInteraction);
+  featuredStage.addEventListener("keydown", openProjectInteraction);
+  projectFocus.addEventListener("click", openProjectInteraction);
+
+  archiveList.addEventListener("click", (event) => {
+    const row = event.target.closest("[data-select-project]");
+    if (!row) return;
+    selectProject(row.dataset.selectProject);
+  });
+
+  filterList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-filter]");
+    if (!button) return;
+    activeFilter = button.dataset.filter;
+    filterList.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
+    renderArchive();
+  });
+
+  search.addEventListener("input", renderArchive);
+  document.getElementById("resetFilters").addEventListener("click", () => {
+    activeFilter = "all";
+    search.value = "";
+    filterList.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.filter === "all"));
+    renderArchive();
+  });
+
   modal.addEventListener("click", (event) => {
     if (event.target.closest("[data-close-modal]")) closeModal();
   });
@@ -170,27 +257,12 @@
   document.addEventListener("keydown", (event) => {
     if (!modal.classList.contains("is-open")) return;
     if (event.key === "Escape") closeModal();
-    if (event.key === "ArrowLeft") stepModal(-1);
-    if (event.key === "ArrowRight") stepModal(1);
-  });
-
-  filterList.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-filter]");
-    if (!button) return;
-    activeFilter = button.dataset.filter;
-    filterList.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
-    renderGrid();
-  });
-  search.addEventListener("input", renderGrid);
-  document.getElementById("resetFilters").addEventListener("click", () => {
-    activeFilter = "all";
-    search.value = "";
-    filterList.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.filter === "all"));
-    renderGrid();
+    if (event.key === "ArrowLeft") stepModal(1);
+    if (event.key === "ArrowRight") stepModal(-1);
   });
 
   renderFeatured();
-  renderGrid();
+  renderArchive();
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -198,9 +270,29 @@
       entry.target.classList.add("is-visible");
       revealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.08, rootMargin: "0px 0px -5%" });
+  }, { threshold: .08, rootMargin: "0px 0px -5%" });
+
   document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-  const hashMatch = location.hash.match(/^#project=(.+)$/);
-  if (hashMatch) openModal(decodeURIComponent(hashMatch[1]), false);
+  function revealVisibleElements() {
+    document.querySelectorAll(".reveal:not(.is-visible)").forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * .96 && rect.bottom > 0) {
+        element.classList.add("is-visible");
+        revealObserver.unobserve(element);
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealVisibleElements, { passive: true });
+  requestAnimationFrame(revealVisibleElements);
+  window.setTimeout(revealVisibleElements, 500);
+
+  function openProjectFromHash() {
+    const hashMatch = window.location.hash.match(/^#project=(.+)$/);
+    if (hashMatch) openModal(decodeURIComponent(hashMatch[1]), false);
+  }
+
+  window.addEventListener("hashchange", openProjectFromHash);
+  openProjectFromHash();
 })();
