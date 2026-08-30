@@ -43,6 +43,25 @@
     return categoryLabels[project.category] || "منتج رقمي";
   }
 
+  function projectLiveLink(project) {
+    if (!project.live) return "";
+    return `<a class="project-card__live" href="${escapeHtml(project.live)}" target="_blank" rel="noopener noreferrer" aria-label="افتح مشروع ${escapeHtml(project.title)}">تجربة مباشرة <span>↗</span></a>`;
+  }
+
+  function updateLiveLink(element, project, label) {
+    if (!element) return;
+    if (!project.live) {
+      element.hidden = true;
+      element.removeAttribute("href");
+      element.removeAttribute("aria-label");
+      return;
+    }
+
+    element.hidden = false;
+    element.href = project.live;
+    element.setAttribute("aria-label", `${label} ${project.title}`);
+  }
+
   function renderDeck() {
     heroDeck.innerHTML = deckOffsets.map((offset, position) => {
       const index = (selectedIndex + offset + projects.length) % projects.length;
@@ -71,7 +90,7 @@
               <span class="project-card__category">${escapeHtml(categoryFor(project))}</span>
               <span class="project-card__title">${escapeHtml(project.title)}</span>
               <span class="project-card__description">${escapeHtml(project.description)}</span>
-              <a class="project-card__live" href="${escapeHtml(project.live)}" target="_blank" rel="noopener noreferrer" aria-label="افتح مشروع ${escapeHtml(project.title)}">تجربة مباشرة <span>↗</span></a>
+              ${projectLiveLink(project)}
             </span>
             <span class="project-card__stack">${project.tech.slice(0, 4).map((technology) => `<span>${escapeHtml(technology)}</span>`).join("")}</span>
           </span>
@@ -103,8 +122,7 @@
     setText("heroProjectTitle", project.title);
     setText("heroDescription", project.description);
     const heroLive = document.getElementById("heroLive");
-    heroLive.href = project.live;
-    heroLive.setAttribute("aria-label", `افتح مشروع ${project.title}`);
+    updateLiveLink(heroLive, project, "افتح مشروع");
     document.getElementById("heroBackdrop").src = image;
     document.getElementById("heroTech").innerHTML = project.tech.slice(0, 6).map((technology) => `<span>${escapeHtml(technology)}</span>`).join("");
 
@@ -115,8 +133,7 @@
     setText("lensBrowserLabel", `${project.title} / ${categoryFor(project)}`);
     setText("lensImageCaption", project.title);
     const lensLive = document.getElementById("lensLive");
-    lensLive.href = project.live;
-    lensLive.setAttribute("aria-label", `زيارة مشروع ${project.title}`);
+    updateLiveLink(lensLive, project, "زيارة مشروع");
     document.getElementById("lensTech").innerHTML = project.tech.map((technology) => `<span>${escapeHtml(technology)}</span>`).join("");
     document.getElementById("lensSpecs").innerHTML = [
       [project.metrics.pages, "شاشة ومسار"],

@@ -73,7 +73,6 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     metrics: { files: 148, source: 110, pages: 11, components: 32 },
     image: "assets/projects/captures/alsalem.jpg",
-    live: "https://alsalem-tau.vercel.app",
   },
   {
     id: "project-07",

@@ -93,6 +93,7 @@ img { display: block; max-width: 100%; }
 .hero-selected > div:first-child span { color: var(--bronze); font-size: 10px; }
 .hero-selected h2 { margin: 5px 0 0; font-size: clamp(27px, 3vw, 44px); font-weight: 300; letter-spacing: -.035em; }
 .project-live-link { width: fit-content; display: inline-flex; align-items: center; gap: 9px; border: 1px solid rgba(219, 196, 157, .34); color: var(--bronze-soft); font-size: 10px; text-decoration: none; transition: color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease; }
+.project-live-link[hidden] { display: none; }
 .project-live-link:hover,
 .project-live-link:focus-visible { color: var(--bg-deep); border-color: var(--bronze-soft); background: var(--bronze-soft); transform: translateY(-2px); }
 .project-live-link--hero { margin-top: 14px; padding: 9px 12px; }
