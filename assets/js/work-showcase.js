@@ -1,8 +1,8 @@
 (function () {
   "use strict";
 
-  const projects = Array.isArray(window.GITHUB_PROJECTS) ? window.GITHUB_PROJECTS : [];
-  const featuredRepos = ["sayyir", "serein-mobile", "modawat", "branda"];
+  const projects = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
+  const featuredProjectIds = ["project-02", "project-01", "project-08", "project-09"];
   const categoryLabels = {
     platform: "منصة رقمية",
     ai: "ذكاء اصطناعي",
@@ -17,11 +17,6 @@
     source: "موثّق من المصدر",
     concept: "في مرحلة مبكرة"
   };
-  const visibilityLabels = {
-    private: "مستودع خاص",
-    public: "مستودع عام"
-  };
-
   const featuredStage = document.getElementById("featuredStage");
   const archiveList = document.getElementById("archiveList");
   const projectFocus = document.getElementById("projectFocus");
@@ -34,7 +29,7 @@
 
   let activeFilter = "all";
   let visibleProjects = projects.slice();
-  let selectedProject = projects.find((project) => project.repo === "sayyir") || projects[0] || null;
+  let selectedProject = projects.find((project) => project.id === "project-02") || projects[0] || null;
   let activeModalIndex = -1;
   let lastFocused = null;
 
@@ -58,13 +53,13 @@
     }
 
     const stack = project.tech.slice(0, 4);
-    return `<div class="tech-visual" aria-hidden="true"><div class="tech-visual__code"><b>${escapeHtml(project.repo)}</b><span>system.compose(modules)</span><span>stack [${stack.map((item) => escapeHtml(item)).join(" / ")}]</span><span>routes ${project.metrics.pages} / source ${project.metrics.source}</span></div></div>`;
+    return `<div class="tech-visual" aria-hidden="true"><div class="tech-visual__code"><b>${escapeHtml(project.title)}</b><span>system.compose(modules)</span><span>stack [${stack.map((item) => escapeHtml(item)).join(" / ")}]</span><span>routes ${project.metrics.pages} / source ${project.metrics.source}</span></div></div>`;
   }
 
   function renderFeatured() {
-    const selected = featuredRepos.map((repo) => projects.find((project) => project.repo === repo)).filter(Boolean);
+    const selected = featuredProjectIds.map((projectId) => projects.find((project) => project.id === projectId)).filter(Boolean);
     featuredStage.innerHTML = selected.map((project, index) => `
-      <article class="selected-card ${index === 0 ? "selected-card--lead" : "selected-card--small"} reveal" tabindex="0" role="button" data-open-project="${escapeHtml(project.repo)}" aria-label="عرض تفاصيل ${escapeHtml(project.title)}">
+      <article class="selected-card ${index === 0 ? "selected-card--lead" : "selected-card--small"} reveal" tabindex="0" role="button" data-open-project="${escapeHtml(project.id)}" aria-label="عرض تفاصيل ${escapeHtml(project.title)}">
         <div class="selected-card__visual">${projectVisual(project, index === 0 ? "hero" : "card")}</div>
         <span class="selected-card__number">${pad(index + 1)}</span>
         <div class="selected-card__content">
@@ -81,7 +76,7 @@
     const term = search.value.trim().toLocaleLowerCase("ar");
     visibleProjects = projects.filter((project) => {
       const matchesFilter = activeFilter === "all" || project.category === activeFilter;
-      const searchable = [project.title, project.repo, project.kicker, project.description, ...project.tech].join(" ").toLocaleLowerCase("ar");
+      const searchable = [project.title, project.kicker, project.description, ...project.tech].join(" ").toLocaleLowerCase("ar");
       return matchesFilter && (!term || searchable.includes(term));
     });
 
@@ -95,7 +90,7 @@
 
     archiveList.innerHTML = visibleProjects.map((project) => {
       const index = projects.indexOf(project);
-      return `<button class="archive-row ${project === selectedProject ? "is-active" : ""}" type="button" data-select-project="${escapeHtml(project.repo)}" aria-pressed="${project === selectedProject ? "true" : "false"}">
+      return `<button class="archive-row ${project === selectedProject ? "is-active" : ""}" type="button" data-select-project="${escapeHtml(project.id)}" aria-pressed="${project === selectedProject ? "true" : "false"}">
         <span class="archive-row__number">${pad(index + 1)}</span>
         <span class="archive-row__title">${escapeHtml(project.title)}</span>
         <span class="archive-row__category">${escapeHtml(categoryLabels[project.category] || project.kicker)}</span>
@@ -132,7 +127,7 @@
           <div><small>ملفات المصدر</small><strong>${project.metrics.source.toLocaleString("en-US")}</strong></div>
         </div>
         <div class="focus-actions">
-          <button type="button" data-open-project="${escapeHtml(project.repo)}">دراسة المشروع <span>←</span></button>
+          <button type="button" data-open-project="${escapeHtml(project.id)}">دراسة المشروع <span>←</span></button>
           ${primaryAction}
         </div>
       </div>
@@ -148,12 +143,12 @@
       </div>`;
   }
 
-  function selectProject(repo) {
-    const project = projects.find((item) => item.repo === repo);
+  function selectProject(projectId) {
+    const project = projects.find((item) => item.id === projectId);
     if (!project) return;
     selectedProject = project;
     archiveList.querySelectorAll("[data-select-project]").forEach((row) => {
-      const active = row.dataset.selectProject === repo;
+      const active = row.dataset.selectProject === projectId;
       row.classList.toggle("is-active", active);
       row.setAttribute("aria-pressed", String(active));
     });
@@ -163,12 +158,12 @@
   function renderModal(project) {
     const projectIndex = projects.indexOf(project);
     document.getElementById("modalVisual").innerHTML = projectVisual(project, "hero");
-    document.getElementById("modalIndex").textContent = `المشروع / ${pad(projectIndex + 1)} — ${project.repo}`;
+    document.getElementById("modalIndex").textContent = `المشروع / ${pad(projectIndex + 1)}`;
     document.getElementById("modalPosition").textContent = `${pad(projectIndex + 1)} / ${pad(projects.length)}`;
     document.getElementById("modalKicker").textContent = project.kicker;
     document.getElementById("modalTitle").textContent = project.title;
     document.getElementById("modalDescription").textContent = project.description;
-    document.getElementById("modalStatus").innerHTML = `<span>${escapeHtml(statusLabels[project.status])}</span><span>${escapeHtml(visibilityLabels[project.visibility])}</span><span>${escapeHtml(categoryLabels[project.category] || "منتج رقمي")}</span>`;
+    document.getElementById("modalStatus").innerHTML = `<span>${escapeHtml(statusLabels[project.status])}</span><span>${escapeHtml(categoryLabels[project.category] || "منتج رقمي")}</span>`;
     document.getElementById("modalMetrics").innerHTML = [
       [project.metrics.files, "ملف"],
       [project.metrics.source, "ملف مصدر"],
@@ -179,13 +174,12 @@
 
     const actions = [];
     if (project.live) actions.push(`<a href="${escapeHtml(project.live)}" target="_blank" rel="noreferrer">فتح النسخة المنشورة <span>↗</span></a>`);
-    if (project.github) actions.push(`<a href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">عرض المستودع <span>↗</span></a>`);
     actions.push(`<a href="https://wa.me/966508424401?text=${encodeURIComponent(`مرحبًا شاهدت مشروع ${project.title} وأرغب في مناقشة مشروع مشابه`)}" target="_blank" rel="noreferrer">اطلب مشروعًا مشابهًا <span>↗</span></a>`);
     document.getElementById("modalActions").innerHTML = actions.join("");
   }
 
-  function openModal(repo, shouldUpdateHash = true) {
-    const project = projects.find((item) => item.repo === repo);
+  function openModal(projectId, shouldUpdateHash = true) {
+    const project = projects.find((item) => item.id === projectId);
     if (!project) return;
     lastFocused = document.activeElement;
     activeModalIndex = projects.indexOf(project);
@@ -193,7 +187,7 @@
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
-    if (shouldUpdateHash) history.replaceState(null, "", `#project=${encodeURIComponent(project.repo)}`);
+    if (shouldUpdateHash) history.replaceState(null, "", `#project=${encodeURIComponent(project.id)}`);
     requestAnimationFrame(() => modalPanel.focus());
   }
 
@@ -211,7 +205,7 @@
     activeModalIndex = (activeModalIndex + direction + projects.length) % projects.length;
     const project = projects[activeModalIndex];
     renderModal(project);
-    history.replaceState(null, "", `#project=${encodeURIComponent(project.repo)}`);
+    history.replaceState(null, "", `#project=${encodeURIComponent(project.id)}`);
     modalPanel.scrollTo({ top: 0, behavior: "smooth" });
   }
 
