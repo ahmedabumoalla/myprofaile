@@ -185,11 +185,9 @@ img { display: block; max-width: 100%; }
 .contact-card { max-width: 480px; padding: 30px; border: 1px solid var(--line); background: rgba(8, 11, 10, .7); backdrop-filter: blur(18px); }
 .contact-card > span { color: var(--muted); font-size: 10px; }
 .contact-card strong { display: block; margin-top: 30px; font-family: var(--font-mono); font-size: clamp(26px, 3vw, 44px); font-weight: 400; }
-.contact-card button { width: 100%; min-height: 52px; display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding: 0 16px; color: var(--bg); background: var(--ink); font-size: 11px; }
-.contact-card button:hover,
-.contact-card button:focus-visible { background: var(--bronze-soft); }
-.copy-toast { position: fixed; z-index: 120; right: 50%; bottom: 26px; padding: 11px 16px; color: var(--bg); background: var(--bronze-soft); font-size: 10px; opacity: 0; pointer-events: none; transform: translate(50%, 18px); transition: opacity .25s ease, transform .25s ease; }
-.copy-toast.is-visible { opacity: 1; transform: translate(50%, 0); }
+.contact-card__whatsapp { width: 100%; min-height: 52px; display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding: 0 16px; color: var(--bg); background: var(--ink); font-size: 11px; text-decoration: none; transition: color .25s ease, background .25s ease; }
+.contact-card__whatsapp:hover,
+.contact-card__whatsapp:focus-visible { color: var(--bg); background: var(--bronze-soft); }
 
 .footer { min-height: 112px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 30px; padding: 0 var(--page-pad); border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .footer .wordmark { color: var(--ink); }

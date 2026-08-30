@@ -19,9 +19,7 @@
   const heroDeck = document.getElementById("heroDeck");
   const projectGrid = document.getElementById("projectGrid");
   const lensScreen = document.querySelector(".lens-screen");
-  const copyToast = document.getElementById("copyToast");
   let selectedIndex = 0;
-  let toastTimer = 0;
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
@@ -186,30 +184,6 @@
     window.setTimeout(revealVisible, 400);
   }
 
-  function showCopyToast() {
-    window.clearTimeout(toastTimer);
-    copyToast.classList.add("is-visible");
-    toastTimer = window.setTimeout(() => copyToast.classList.remove("is-visible"), 1800);
-  }
-
-  async function copyPhoneNumber() {
-    const phone = "+966508424401";
-    try {
-      await navigator.clipboard.writeText(phone);
-    } catch (_) {
-      const temporaryInput = document.createElement("textarea");
-      temporaryInput.value = phone;
-      temporaryInput.setAttribute("readonly", "");
-      temporaryInput.style.position = "fixed";
-      temporaryInput.style.opacity = "0";
-      document.body.appendChild(temporaryInput);
-      temporaryInput.select();
-      document.execCommand("copy");
-      temporaryInput.remove();
-    }
-    showCopyToast();
-  }
-
   document.addEventListener("click", (event) => {
     const scrollButton = event.target.closest("[data-scroll-target]");
     if (scrollButton) {
@@ -222,8 +196,6 @@
   projectGrid.addEventListener("click", handleProjectClick);
   document.getElementById("heroPrev").addEventListener("click", () => stepProject(-1));
   document.getElementById("heroNext").addEventListener("click", () => stepProject(1));
-  document.getElementById("copyPhone").addEventListener("click", copyPhoneNumber);
-
   document.addEventListener("keydown", (event) => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.key === "ArrowLeft") stepProject(1);
