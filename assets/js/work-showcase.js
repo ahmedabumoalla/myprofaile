@@ -2,7 +2,7 @@
   "use strict";
 
   const projects = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
-  const featuredProjectIds = ["project-02", "project-01", "project-08", "project-09"];
+  const featuredProjectIds = ["project-01", "project-02", "project-08", "project-09"];
   const categoryLabels = {
     platform: "منصة رقمية",
     ai: "ذكاء اصطناعي",
@@ -29,7 +29,7 @@
 
   let activeFilter = "all";
   let visibleProjects = projects.slice();
-  let selectedProject = projects.find((project) => project.id === "project-02") || projects[0] || null;
+  let selectedProject = projects.find((project) => project.id === "project-01") || projects[0] || null;
   let activeModalIndex = -1;
   let lastFocused = null;
 
