@@ -51,5 +51,5 @@ createServer((request, response) => {
   response.writeHead(200, { ...headers, 'content-length': size });
   createReadStream(filePath).pipe(response);
 }).listen(port, '0.0.0.0', () => {
-  console.log(`Busla clone running at http://0.0.0.0:${port}`);
+  console.log(`Portfolio platform running at http://0.0.0.0:${port}`);
 });

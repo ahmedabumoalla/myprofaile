@@ -1,4 +1,4 @@
-// Busla — homepage behavior: preloader, video, and booking calendar
+// Homepage behavior: preloader, video, and booking calendar
 (function(){
   const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -55,7 +55,7 @@
     const wrap = document.getElementById('calSlotsWrap');
     const slotsEl = document.getElementById('calSlots');
     const labelEl = document.getElementById('calSlotsLabel');
-    const lang = window.Busla.getLang();
+    const lang = window.Platform.getLang();
     const requestId = ++slotsRequestId;
     selectedSlot = null;
     wrap.style.display = 'block';
@@ -93,7 +93,7 @@
   let pendingBooking = null;
 
   function openBookingModal(y, m, day, time){
-    const lang = window.Busla.getLang();
+    const lang = window.Platform.getLang();
     pendingBooking = { date: isoDate(y, m, day), time };
     const dateLabel = new Date(y, m, day).toLocaleDateString(lang === 'en' ? 'en-US' : 'ar-SA-u-ca-gregory', { weekday:'long', month:'long', day:'numeric' });
     document.getElementById('bookingModalSummary').textContent = `${dateLabel} — ${formatSlotLabel(time, lang)}`;
@@ -108,7 +108,7 @@
   bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     if(!pendingBooking) return;
-    const lang = window.Busla.getLang();
+    const lang = window.Platform.getLang();
     const name = document.getElementById('bookingName').value.trim();
     const email = document.getElementById('bookingEmail').value.trim();
     bookingError.style.display = 'none';
@@ -154,7 +154,7 @@
   });
 
   function renderCalendar(){
-    const lang = window.Busla.getLang();
+    const lang = window.Platform.getLang();
     const y = Math.floor(calMonth / 12);
     const m = ((calMonth % 12) + 12) % 12;
     document.getElementById('calMonthLabel').textContent = `${lang === 'en' ? MONTHS_EN[m] : MONTHS_AR[m]} ${y}`;

@@ -1,4 +1,4 @@
-// Busla — shared behavior: header menu, scroll reveal, counters
+// Shared behavior: header menu, scroll reveal, counters
 (function(){
   const PAL = {
     dark:{
@@ -68,7 +68,7 @@
   checkReveals();
   [200, 600, 1400, 2600, 4000].forEach(ms => setTimeout(checkReveals, ms));
 
-  window.Busla = window.Busla || {};
-  window.Busla.getLang = () => 'ar';
-  window.Busla.checkReveals = checkReveals;
+  window.Platform = window.Platform || {};
+  window.Platform.getLang = () => 'ar';
+  window.Platform.checkReveals = checkReveals;
 })();
