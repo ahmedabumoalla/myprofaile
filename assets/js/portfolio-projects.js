@@ -170,7 +170,7 @@ window.PORTFOLIO_PROJECTS = [
     description: "مرشد أكاديمي يحلل مستوى الطالب ويحدد نقاط القوة والضعف ثم يقترح المواد وخطة تطوير تناسبه",
     tech: ["Next.js", "TypeScript", "Supabase", "AI"],
     metrics: { files: 46, source: 27, pages: 10, components: 0 },
-    image: "assets/projects/optimized/athar-background.jpg",
+    image: "assets/projects/captures/athar-live.png",
     live: "https://athar-ai-sigma.vercel.app",
   },
   {
@@ -218,7 +218,7 @@ window.PORTFOLIO_PROJECTS = [
     description: "منصة لشركة متخصصة في قص وتشكيل المعادن بالـ CNC والليزر والواجهات المعمارية",
     tech: ["Next.js", "Supabase", "Framer Motion"],
     metrics: { files: 113, source: 90, pages: 71, components: 8 },
-    image: "assets/projects/optimized/ashkal-industrial.jpg",
+    image: "assets/projects/captures/ashkal-and-more-live.png",
     live: "https://ashkal-and-more.vercel.app",
   },
   {
