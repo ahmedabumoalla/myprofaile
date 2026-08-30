@@ -1,20 +1,5 @@
 window.GITHUB_PROJECTS = [
   {
-    repo: "myprofaile",
-    title: "المعرض التقني",
-    kicker: "هوية رقمية / ملف أعمال",
-    category: "experience",
-    status: "live",
-    visibility: "public",
-    description: "هذا هو معرض أعمالي التقني وفيه أعرض المنتجات والخدمات والمشاريع بطريقة تخلّي الشغل يتكلم عن نفسه",
-    tech: ["HTML", "CSS", "JavaScript", "Vercel"],
-    metrics: { files: 20, source: 4, pages: 2, components: 0 },
-    image: "assets/img/work-2-energy.png",
-    live: "https://myprofaile.vercel.app",
-    github: "https://github.com/ahmedabumoalla/myprofaile",
-    featured: true
-  },
-  {
     repo: "serein-mobile",
     title: "Serein",
     kicker: "رفاهية متنقلة / تجربة وحجوزات",
